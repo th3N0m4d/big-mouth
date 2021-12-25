@@ -1,3 +1,5 @@
+org: th3n0m4d
+app: big-mouth
 service: big-mouth
 frameworkVersion: "2"
 
@@ -9,6 +11,7 @@ provider:
   lambdaHashingVersion: 20201221
   environment:
     DYNAMO_TABLE_NAME: ${self:custom.restaurantsTableName}
+    REGION: ${self:provider.region}
 
 custom:
   restaurantsTableName: Restaurants
@@ -45,9 +48,6 @@ functions:
       - http:
           path: /
           method: GET
-    environment:
-      # TODO: Find a better way to reference ARNs
-      API: https://r0241vmogb.execute-api.eu-central-1.amazonaws.com/dev/api/
   # API
   getRestaurants:
     handler: functions/api.getRestaurants
@@ -55,8 +55,16 @@ functions:
       - http:
           path: /api/restaurants
           method: GET
+          authorizer: aws_iam
     iamRoleStatements:
-      - Effect: "Allow"
+      - Effect: Allow
         Action:
           - "dynamodb:Scan"
         Resource: !GetAtt RestaurantsTable.Arn
+      - Effect: Allow
+        Action: execute-api:Invoke
+        # Apply policy to all stages and regions for this endpoint
+        Resource: arn:aws:execute-api:*:*:*/*/GET/api/restaurants
+    environment:
+      # TODO: Find a better way to reference API
+      API_URL: https://r0241vmogb.execute-api.eu-central-1.amazonaws.com/dev/api/
