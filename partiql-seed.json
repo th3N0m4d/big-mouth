@@ -1,0 +1,92 @@
+{
+  "Restaurants": [
+    {
+      "PutRequest": {
+        "Item": {
+          "name": { "S": "Fangtasia" },
+          "image": {
+            "S": "https://d2qt42rcwzspd6.cloudfront.net/manning/fangtasia.png"
+          },
+          "themes": { "L": [{ "S": "true blood" }] }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "name": { "S": "Shoney's" },
+          "image": {
+            "S": "https://d2qt42rcwzspd6.cloudfront.net/manning/shoney's.png"
+          },
+          "themes": { "L": [{ "S": "cartoon" }, { "S": "rick and morty" }] }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "name": { "S": "Freddy's BBQ Joint" },
+          "image": {
+            "S": "https://d2qt42rcwzspd6.cloudfront.net/manning/freddy's+bbq+joint.png"
+          },
+          "themes": { "L": [{ "S": "netflix" }, { "S": "house of cards" }] }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "name": { "S": "Pizza Planet" },
+          "image": {
+            "S": "https://d2qt42rcwzspd6.cloudfront.net/manning/pizza+planet.png"
+          },
+          "themes": { "L": [{ "S": "netflix" }, { "S": "toy story" }] }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "name": { "S": "Leaky Cauldron" },
+          "image": {
+            "S": "https://d2qt42rcwzspd6.cloudfront.net/manning/leaky+cauldron.png"
+          },
+          "themes": { "L": [{ "S": "movie" }, { "S": "harry potter" }] }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "name": { "S": "Lil' Bits" },
+          "image": {
+            "S": "https://d2qt42rcwzspd6.cloudfront.net/manning/lil+bits.png"
+          },
+          "themes": { "L": [{ "S": "cartoon" }, { "S": "rick and morty" }] }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "name": { "S": "Fancy Eats" },
+          "image": {
+            "S": "https://d2qt42rcwzspd6.cloudfront.net/manning/fancy+eats.png"
+          },
+          "themes": { "L": [{ "S": "cartoon" }, { "S": "rick and morty" }] }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "name": { "S": "Don Cuco" },
+          "image": {
+            "S": "https://d2qt42rcwzspd6.cloudfront.net/manning/don%20cuco.png"
+          },
+          "themes": { "L": [{ "S": "cartoon" }, { "S": "rick and morty" }] }
+        }
+      }
+    }
+  ]
+}

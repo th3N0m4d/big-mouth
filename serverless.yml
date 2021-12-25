@@ -1,0 +1,62 @@
+service: big-mouth
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: eu-central-1
+  lambdaHashingVersion: 20201221
+  environment:
+    DYNAMO_TABLE_NAME: ${self:custom.restaurantsTableName}
+
+custom:
+  restaurantsTableName: Restaurants
+  bundle:
+    copyFiles: # Copy any additional files to the generated package
+      - from: "static/*" # Where the files are currently
+        to: "./"
+
+plugins:
+  - serverless-iam-roles-per-function
+  - serverless-bundle
+
+resources:
+  Resources:
+    RestaurantsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.restaurantsTableName}
+        AttributeDefinitions:
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: name
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+functions:
+  # Static Html pages
+  index:
+    handler: functions/home.index
+    events:
+      - http:
+          path: /
+          method: GET
+    environment:
+      # TODO: Find a better way to reference ARNs
+      API: https://r0241vmogb.execute-api.eu-central-1.amazonaws.com/dev/api/
+  # API
+  getRestaurants:
+    handler: functions/api.getRestaurants
+    events:
+      - http:
+          path: /api/restaurants
+          method: GET
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "dynamodb:Scan"
+        Resource: !GetAtt RestaurantsTable.Arn

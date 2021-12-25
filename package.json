@@ -1,0 +1,22 @@
+{
+  "name": "big-mouth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "static/index.js",
+  "scripts": {
+    "db-seed": "aws dynamodb batch-write-item  --request-items  file://partiql-seed.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.45.0",
+    "@aws-sdk/lib-dynamodb": "^3.45.0",
+    "axios": "^0.24.0",
+    "mustache": "^4.2.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.1048.0",
+    "serverless-bundle": "^5.2.0",
+    "serverless-iam-roles-per-function": "^3.2.0"
+  }
+}
