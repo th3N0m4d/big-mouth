@@ -12,6 +12,9 @@ provider:
   environment:
     DYNAMO_TABLE_NAME: ${self:custom.restaurantsTableName}
     REGION: ${self:provider.region}
+    AWS_ACCESS_KEY_ID: ${param:awsSecretKeyId}
+    AWS_SECRET_ACCESS_KEY: ${param:awsAccessKeyId}
+    API_URL: https://r0241vmogb.execute-api.eu-central-1.amazonaws.com/dev/api/
 
 custom:
   restaurantsTableName: Restaurants
@@ -65,6 +68,3 @@ functions:
         Action: execute-api:Invoke
         # Apply policy to all stages and regions for this endpoint
         Resource: arn:aws:execute-api:*:*:*/*/GET/api/restaurants
-    environment:
-      # TODO: Find a better way to reference API
-      API_URL: https://r0241vmogb.execute-api.eu-central-1.amazonaws.com/dev/api/

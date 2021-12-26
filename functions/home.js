@@ -10,8 +10,8 @@ const interceptor = aws4Interceptor(
     service: "execute-api",
   },
   {
-    accessKeyId: "",
-    secretAccessKey: "",
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   }
 );
 
@@ -25,7 +25,7 @@ const loadTemplate = async () => {
 };
 
 const getRestaurants = async () => {
-  const { data } = await axios.get(`${process.env.API}restaurants`);
+  const { data } = await axios.get(`${process.env.API_URL}restaurants`);
 
   return data;
 };
