@@ -6,7 +6,7 @@ import { aws4Interceptor } from "aws4-axios";
 
 const interceptor = aws4Interceptor(
   {
-    region: process.env.REGION,
+    region: process.env.AWS_REGION,
     service: "execute-api",
   },
   {
