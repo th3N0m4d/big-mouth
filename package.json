@@ -4,7 +4,8 @@
   "description": "",
   "main": "static/index.js",
   "scripts": {
-    "db-seed": "aws dynamodb batch-write-item  --request-items  file://partiql-seed.json"
+    "db-seed": "aws dynamodb batch-write-item  --request-items  file://partiql-seed.json",
+    "e2e": "yarn run testcafe chrome tests/"
   },
   "author": "",
   "license": "ISC",

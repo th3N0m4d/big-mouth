@@ -55,7 +55,8 @@ functions:
       - http:
           path: /api/restaurants
           method: GET
-          authorizer: aws_iam
+          # See: https://th3-n0m4d.atlassian.net/browse/AWS-2
+          # authorizer: aws_iam
     iamRoleStatements:
       - Effect: Allow
         Action:
