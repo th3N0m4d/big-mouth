@@ -37,3 +37,11 @@ aws dynamodb create-table \
     --provisioned-throughput \
         ReadCapacityUnits=1,WriteCapacityUnits=1
 ```
+
+## Misc
+
+- Because Lambda functions run in an isolated environment, you get access to environment variables such as Region out of the box. For a list of the variables you have access to, please [visit](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html) the official docs.
+
+## Elastic Search
+
+## Caching
