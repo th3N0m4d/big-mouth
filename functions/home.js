@@ -6,13 +6,12 @@ import { aws4Interceptor } from "aws4-axios";
 
 const interceptor = aws4Interceptor(
   {
-    region: process.env.AWS_REGION,
+    region: process.env.REGION,
     service: "execute-api",
   },
   {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    sessionToken: process.env.AWS_SESSION_TOKEN,
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
   }
 );
 
@@ -26,7 +25,7 @@ const loadTemplate = async () => {
 };
 
 const getRestaurants = async () => {
-  const { data } = await axios.get(`${process.env.API_URL}restaurants`);
+  const { data } = await axios.get(`${process.env.API_ROOT_URL}restaurants`);
 
   return data;
 };
@@ -46,13 +45,13 @@ export const index = async () => {
         "Content-Type": "text/html; charset=UTF-8",
       },
     };
-  } catch (error) {
-    console.log(error.message);
+  } catch ({ message, status }) {
+    // TODO: Redirect to error route
     return {
-      statusCode: 500,
-      body: `<h1>${error.message}</h1>`,
+      statusCode: status,
+      body: JSON.stringify(message),
       headers: {
-        "Content-Type": "text/html; charset=UTF-8",
+        "Content-Type": "application/json",
       },
     };
   }
