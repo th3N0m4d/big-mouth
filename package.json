@@ -6,7 +6,7 @@
   "scripts": {
     "db-seed": "aws dynamodb batch-write-item  --request-items  file://partiql-seed.json",
     "e2e": "yarn run testcafe chrome tests/",
-    "dev": "sls offline start"
+    "start:offline": "sls offline start"
   },
   "author": "",
   "license": "ISC",
