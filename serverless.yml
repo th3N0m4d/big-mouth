@@ -26,6 +26,7 @@ custom:
 plugins:
   - serverless-iam-roles-per-function
   - serverless-bundle
+  - serverless-offline
 
 resources:
   Resources:
@@ -58,7 +59,6 @@ functions:
       - http:
           path: /api/restaurants
           method: GET
-          # See: https://th3-n0m4d.atlassian.net/browse/AWS-2
           authorizer: aws_iam
     iamRoleStatements:
       - Effect: Allow

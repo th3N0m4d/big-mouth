@@ -5,7 +5,8 @@
   "main": "static/index.js",
   "scripts": {
     "db-seed": "aws dynamodb batch-write-item  --request-items  file://partiql-seed.json",
-    "e2e": "yarn run testcafe chrome tests/"
+    "e2e": "yarn run testcafe chrome tests/",
+    "start:offline": "sls offline start"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "aws-sdk": "^2.1048.0",
     "serverless-bundle": "^5.2.0",
     "serverless-iam-roles-per-function": "^3.2.0",
+    "serverless-offline": "^8.3.1",
     "testcafe": "^1.18.1"
   }
 }

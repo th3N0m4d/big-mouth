@@ -1,5 +1,6 @@
 import { Selector } from "testcafe";
 
+// TODO: Get url from environment
 fixture`Home Page`.page(
   "https://r0241vmogb.execute-api.eu-central-1.amazonaws.com/dev/"
 );
